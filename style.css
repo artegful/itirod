@@ -6,7 +6,7 @@
 body {
     margin: 0;
     background-color: #363636;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: #777777;
 }
 
@@ -45,6 +45,10 @@ h3 {
 
 section {
   margin: 1.5em 1em;
+}
+
+body, html, main, div.game-container {
+  height: 100%;
 }
 
 a {
@@ -123,14 +127,18 @@ a.contact {
 }
 
 div.game-container {
-  margin: 18% 15%;
+  margin: 0 15%;
+  display: flex;
+  align-items: center;
 }
 
 div.settings-container {
   display: flex;
+  height: 100%;
   flex-direction: column;
   align-items: center;
-  margin: 15% 15%;
+  justify-content: center;
+  margin: 0 15%;
 }
 
 div.settings-button-container {
@@ -140,7 +148,7 @@ div.settings-button-container {
 }
 
 div.settings-button {
-  margin: 0.2em 0.5em;
+  margin: 0.4em 0.5em;
   border: 2px solid;
   padding: 0.5em 2em;
   border-radius: 1em;
@@ -172,9 +180,11 @@ div.funk-theme {
 
 div.results-container {
   display: flex;
+  height: 100%;
   flex-direction: column;
   align-items: center;
-  margin: 15% 15%;
+  justify-content: center;
+  margin: 0 15%;
   text-align: center;
 }
 
@@ -242,7 +252,7 @@ span.typing-cursor {
     }
 
     div.game-container {
-      margin: 18% 10%;
+      margin: 0 10%;
     }
 
     div.typing-container {
