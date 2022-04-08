@@ -4,9 +4,7 @@
 
 body {
     margin: 0;
-    background-color: #363636;
     font-family: 'Roboto', sans-serif;
-    color: #777777;
 }
 
 header {
@@ -36,7 +34,6 @@ h2 {
 h3 {
   font-size: x-large;
   text-align: center;
-  color: blue;
   margin: 0.1em 1em;
 }
 
@@ -53,29 +50,15 @@ a {
 }
 
 a:link {
-  color: #777777;
   text-decoration: none;
 }
 
 a:visited {
   text-decoration: none;
-  color: #777777;
 }
 
 a:focus {
   text-decoration: none;
-}
-
-a:hover {
-  color: white;
-}
-
-a:active {
-  color: #777777;
-}
-
-a.logo {
-  color: blue;
 }
 
 div.buttons {
@@ -96,10 +79,6 @@ a.mode {
 
 a.reset-button {
   margin: 2em;
-}
-
-a.selected {
-    color: blue;
 }
 
 a.contact {
@@ -144,7 +123,7 @@ div.settings-button-container {
   justify-content: space-evenly;
 }
 
-div.settings-button {
+button.settings-button {
   margin: 0.4em 0.5em;
   border: 2px solid;
   padding: 0.5em 2em;
@@ -152,22 +131,22 @@ div.settings-button {
   transition: all 0.2s ease;
 }
 
-div.settings-button:hover {
+button.settings-button:hover {
   transform: scale(1.2);
 }
 
-div.blue-theme {
+button.blue-theme {
   background-color: #363636;
   color: blue;
 }
 
-div.red-theme {
+button.red-theme {
   background-color: #252525;
   color: red;
 }
 
-div.funk-theme {
-  background-color: purple;
+button.funk-theme {
+  background-color: #402d4d;
   color: lightgreen;
 }
 
@@ -189,14 +168,17 @@ div.typing-container {
   display: flex;
   align-items: center;
   flex-direction: column;
-  clear: right;
 }
 
 p.timer {
+  display: inline-block;
+}
+
+div.timer-container {
+  display: flex;
+  flex-direction: row-reverse;
   margin: 0;
   font-size: xx-large;
-  color: blue;
-  float: right;
 }
 
 p.typing-text {
@@ -204,16 +186,7 @@ p.typing-text {
   text-align: center;
 }
 
-span.typing-complete {
-  color: white;
-}
-
-span.typing-error {
-  color: red;
-}
-
 span.typing-cursor {
-  color: blue;
   animation: blink 0.7s alternate infinite;
 }
 
