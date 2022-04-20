@@ -64,6 +64,20 @@ export class TypingController
         this._cursor = document.getElementById("typing-cursor");
 
         this._typingContainer.onkeydown = (event) => this.OnKeyDown(event);
+
+        //if mobile
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+        {     
+            //couldn't find a good way to trigger keyboard on mobile, so there is a zero size input
+            //(not hidden, because they are unfocusable)
+            this._typingContainer.onfocus = () => 
+            {
+                document.getElementById("input").focus();
+                document.getElementById("input").click();
+                document.getElementById("input").onkeydown = (event) => this.OnKeyDown(event);
+            };
+        }
+
         this._typedCharacters = 0;
         this._typedWords = 0;
         this._errorCharacters = 0;
