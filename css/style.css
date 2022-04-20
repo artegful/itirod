@@ -210,13 +210,6 @@ i.loading {
   animation: spin 1s linear infinite;
 }
 
-div#input-container {
-  width: 0;
-  height: 0;
-  margin: 0;
-  overflow: hidden;
-}
-
 #sidebar {
   height: 100%; 
   width: 0; 
@@ -231,20 +224,16 @@ div#input-container {
   transition: 0.3s;
 }
 
-.sidebar a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
 #close-button {
   position: absolute;
   font-size: 2em;
   top: 1%;
   left: 3%;
+}
+
+#input {
+  position: absolute;
+  top: -200px;
 }
 
 @keyframes blink {
