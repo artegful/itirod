@@ -1,9 +1,9 @@
-body {
+body, #sidebar {
     background-color: #383a4d;
     color: #777777;
 }
   
-h3, a.logo, a.selected, a.selected:hover, div.timer-container, span.typing-cursor {
+h3, a.logo, a.selected, a.selected:hover, div.timer-container, span#typing-cursor {
     color: darkred;
 }
 
@@ -17,4 +17,5 @@ span.typing-complete, a:hover {
 
 span.typing-error {
     color: red;
+    text-decoration: underline;
 }
