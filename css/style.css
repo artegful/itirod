@@ -266,7 +266,7 @@ div#input-container {
   user-select: none;
 }
 
-@media (max-aspect-ratio: 1/1) {
+@media (max-aspect-ratio: 6/5) {
     .nav {
         height: 100vh;
     }
@@ -302,7 +302,7 @@ div#input-container {
     }
 }
 
-@media (min-aspect-ratio: 1/1) {
+@media (min-aspect-ratio: 6/5) {
     #nav-burger {
         display: none;
     }
