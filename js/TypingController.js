@@ -117,7 +117,7 @@ export class TypingController
             return;
         }
 
-        if (event.key === "Backspace" && this._typedCharacters > 0)
+        if (event.key === "Backspace")
         {
             this.HandleBackspace();
             return;
@@ -128,6 +128,11 @@ export class TypingController
 
     HandleBackspace()
     {
+        if (this._typedCharacters === 0)
+        {
+            return;
+        }
+
         this.ChangeTypedCharacters(-1);
 
         let span = this._spans[this._typedCharacters];

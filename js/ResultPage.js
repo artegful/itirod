@@ -34,8 +34,8 @@ export class ResultPage extends Page
         let wpm = Math.floor(correctCharacters * 60 / 
             this._latestStats.timeInMiliseconds * 1000 / averageCharactersInWord);
 
-        let accuracy = (correctCharacters) /
-            this._latestStats.totalCharacters * 100;
+        let accuracy = this._latestStats.totalCharacters > 0 ? 
+        (correctCharacters) / this._latestStats.totalCharacters * 100 : 0;
 
         this._wpm.innerText = wpm;
         this._accuracy.innerText = accuracy.toFixed(0) + "%";

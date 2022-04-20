@@ -34,6 +34,8 @@ export class Page
 
     async Hide(callback) 
     {
+        this._container.innerHTML = "";
+
         callback();
     }
 
