@@ -78,7 +78,14 @@ export class TypingController
                 this._hiddenInput.click();
             };
 
-            this._hiddenInput.onkeyup = (event) => this.OnMobileKeyUp(event);
+            //keyup and down are triggered on mobile, but key codes are wrong
+            //this is simulating key input with <input>
+            this._previousMobileInputLength = 0;
+            this._hiddenInput.value = "";
+            this._hiddenInput.addEventListener('input', () =>
+            {
+                this.OnMobileInputChanged();
+            });
         }
 
         this._typedCharacters = 0;
@@ -129,19 +136,22 @@ export class TypingController
         this.HandleNextCharacter(key);
     }
 
-    OnMobileKeyUp(event)
+    OnMobileInputChanged()
     {
-        if (event.key === "Backspace")
+        let text = this._hiddenInput.value;
+        let character;
+
+        if (text.length < this._previousMobileInputLength)
         {
-            this.OnKeyDown(event.key)
+            character = "Backspace";
         }
         else
         {
-            let input = this._hiddenInput.value;
-            let character = input[input.length - 1];
-
-            this.OnKeyDown(character);
+            character = text[text.length - 1];
         }
+
+        this._previousMobileInputLength = text.length;
+        this.OnKeyDown(character);
     }
 
     HandleBackspace()
