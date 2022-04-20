@@ -63,19 +63,22 @@ export class TypingController
 
         this._cursor = document.getElementById("typing-cursor");
 
-        this._typingContainer.onkeydown = (event) => this.OnKeyDown(event);
+        this._typingContainer.onkeydown = (event) => this.OnKeyDown(event.key);
 
         //if mobile
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
         {     
+            this._hiddenInput = document.getElementById("input");
+
             //couldn't find a good way to trigger keyboard on mobile, so there is a zero size input
             //(not hidden, because they are unfocusable)
             this._typingContainer.onfocus = () => 
             {
-                document.getElementById("input").focus();
-                document.getElementById("input").click();
-                document.getElementById("input").onkeydown = (event) => this.OnKeyDown(event);
+                this._hiddenInput.focus();
+                this._hiddenInput.click();
             };
+
+            this._hiddenInput.onkeyup = (event) => this.OnMobileKeyUp(event);
         }
 
         this._typedCharacters = 0;
@@ -110,20 +113,35 @@ export class TypingController
         this.Initialize();
     }
 
-    OnKeyDown(event)
+    OnKeyDown(key)
     {
-        if (event.key === "Tab" || this._typedCharacters === this._spans.length)
+        if (key === "Tab" || this._typedCharacters === this._spans.length)
         {
             return;
         }
 
-        if (event.key === "Backspace")
+        if (key === "Backspace")
         {
             this.HandleBackspace();
             return;
         }
 
-        this.HandleNextCharacter();
+        this.HandleNextCharacter(key);
+    }
+
+    OnMobileKeyUp(event)
+    {
+        if (event.key === "Backspace")
+        {
+            this.OnKeyDown(event.key)
+        }
+        else
+        {
+            let input = this._hiddenInput.value;
+            let character = input[input.length - 1];
+
+            this.OnKeyDown(character);
+        }
     }
 
     HandleBackspace()
@@ -144,7 +162,7 @@ export class TypingController
         }
     }
 
-    HandleNextCharacter()
+    HandleNextCharacter(key)
     {
         if (this._startTime == null)
         {
@@ -152,7 +170,7 @@ export class TypingController
         }
 
         let span = this._spans[this._typedCharacters];
-        let isCorrect = span.innerText === event.key;
+        let isCorrect = span.innerText === key;
 
         if (!isCorrect)
         {
