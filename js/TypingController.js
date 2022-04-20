@@ -88,10 +88,10 @@ export class TypingController
             //this is simulating key input with <input>
             this._previousMobileInputLength = 0;
             this._hiddenInput.value = "";
-            this._hiddenInput.addEventListener('input', () =>
+            this._hiddenInput.oninput = () =>
             {
                 this.OnMobileInputChanged();
-            });
+            };
         }
 
         this._typedCharacters = 0;
