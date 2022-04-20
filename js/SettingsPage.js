@@ -6,6 +6,7 @@ export class SettingsPage extends Page
     {
         this._themeButtons = document.getElementsByClassName("settings-button");
         this._linkTheme = document.getElementById("theme-link");
+        this._themeIndicator = document.getElementById("theme-indicator");
 
         for (let i = 0; i < this._themeButtons.length; i++)
         {
@@ -21,5 +22,6 @@ export class SettingsPage extends Page
     ApplyTheme(name)
     {
         this._linkTheme.setAttribute("href", `./css/${name}.css`);
+        this._themeIndicator.innerText = name;
     }
 }
