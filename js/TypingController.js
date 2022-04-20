@@ -21,8 +21,11 @@ export class TypingController
                 this._mode = modes.time;
                 this.Restart();
 
-                this._timeButton.classList.add("selected");
-                this._wordsButton.classList.remove("selected");
+                for (let i = 0; i < this._timeButtons.length; i++)
+                {
+                    this._timeButton.classList.add("selected");
+                    this._wordsButton.classList.remove("selected");
+                }
             }
 
             this._wordsButtons[i].onclick = () => 
@@ -30,8 +33,11 @@ export class TypingController
                 this._mode = modes.words;
                 this.Restart();
 
-                this._wordsButton.classList.add("selected");
-                this._timeButton.classList.remove("selected");
+                for (let i = 0; i < this._timeButtons.length; i++)
+                {
+                    this._wordsButton.classList.add("selected");
+                    this._timeButton.classList.remove("selected");
+                }
             }
         }
         
