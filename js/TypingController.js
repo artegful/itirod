@@ -145,7 +145,6 @@ export class TypingController
     OnMobileInputChanged()
     {
         let text = this._hiddenInput.value;
-        alert(text);
         let character;
 
         if (text.length < this._previousMobileInputLength)
