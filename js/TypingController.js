@@ -76,8 +76,7 @@ export class TypingController
         {     
             this._hiddenInput = document.getElementById("input");
 
-            //couldn't find a good way to trigger keyboard on mobile, so there is a zero size input
-            //(not hidden, because they are unfocusable)
+            //there is no way to trigger a keyboard on mobile, so using hidden input field
             this._typingContainer.onfocus = () => 
             {
                 this._hiddenInput.focus();
