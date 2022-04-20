@@ -23,8 +23,8 @@ export class TypingController
 
                 for (let i = 0; i < this._timeButtons.length; i++)
                 {
-                    this._timeButton.classList.add("selected");
-                    this._wordsButton.classList.remove("selected");
+                    this._timeButtons[i].classList.add("selected");
+                    this._wordsButtons[i].classList.remove("selected");
                 }
             }
 
@@ -35,8 +35,8 @@ export class TypingController
 
                 for (let i = 0; i < this._timeButtons.length; i++)
                 {
-                    this._wordsButton.classList.add("selected");
-                    this._timeButton.classList.remove("selected");
+                    this._wordsButtons[i].classList.add("selected");
+                    this._timeButtons[i].classList.remove("selected");
                 }
             }
         }
