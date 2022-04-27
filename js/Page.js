@@ -8,17 +8,13 @@ export class Page
 
     async Load()
     {
-        await fetch(`./pages/${this._name}.html`)
-            .then((response) => response.text())
-            .then((text) => 
-            {
-                this._html = text;
-            });
+        let response = await fetch(`./pages/${this._name}.html`);
+        this._html = await response.text();
     }
 
     async Show(callback)
     {
-        if (this._html == null)
+        if (this._html === undefined)
         {
             await this.Load();
         }
@@ -32,11 +28,9 @@ export class Page
     AfterShowingHook()
     { }
 
-    async Hide(callback) 
+    Hide(callback) 
     {
         this._container.innerHTML = "";
-
-        callback();
     }
 
     get Name()

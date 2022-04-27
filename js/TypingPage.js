@@ -37,9 +37,8 @@ export class TypingPage extends Page
         callback();
     }
 
-    async Hide(callback)
+    Hide()
     {
         this._typingController.Cleanup();
-        callback();
     }
 }

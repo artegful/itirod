@@ -52,24 +52,17 @@ export class PageLoader
     {
         ToggleFlexContainer(this._loadingContainer, true);
 
-        let showPage = () => 
-        {
-            page.Show(() => 
-            {
-                ToggleFlexContainer(this._loadingContainer, false);
-
-                this._currentPage = page;
-            });
-        };
-
         if (this._currentPage != null)
         {
-            this._currentPage.Hide(showPage);
+            this._currentPage.Hide();
         }
-        else
+        
+        page.Show(() => 
         {
-            showPage();
-        }
+            ToggleFlexContainer(this._loadingContainer, false);
+
+            this._currentPage = page;
+        });
     }
 
     get CurrentPage()
