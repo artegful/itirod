@@ -28,7 +28,7 @@ export class Page
     AfterShowingHook()
     { }
 
-    Hide(callback) 
+    Hide() 
     {
         this._container.innerHTML = "";
     }
