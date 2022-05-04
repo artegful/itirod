@@ -1,3 +1,4 @@
+![Deploy](https://github.com/artegful/itirod/actions/workflows/check-and-deploy.yml/badge.svg)
 # itirod (**Typing Training Game**)
 **Климович Артемий 953503**
 

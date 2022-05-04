@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Check And Deploy
 on: [push]
 jobs:
   check:
