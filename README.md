@@ -4,7 +4,7 @@
 
 ## Functions
 - The game itself
-- Other modes like typing quote instead of random words
+- Other modes like typing before timer runs out instead of random words
 - Some stats about your typing perfomance (speed, accuracy, amount of deleted symbols, words with errors) 
 - Some customization for the game (like themes, fonts)
 
