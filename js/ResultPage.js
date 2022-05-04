@@ -24,7 +24,7 @@ export class ResultPage extends Page {
 
     const averageCharactersInWord = 5
     let correctCharacters = this._latestStats.totalCharacters - this._latestStats.errors
-    correctCharacters = correctCharacters > 0 ? correctCharacters : 1
+    correctCharacters = correctCharacters < 0 ? 0 : correctCharacters
 
     const wpm = Math.floor(correctCharacters * 60 /
             this._latestStats.timeInMiliseconds * 1000 / averageCharactersInWord)
