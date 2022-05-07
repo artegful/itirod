@@ -102,6 +102,8 @@ export class TypingController {
       this._spans.push(span)
       this._typingText.appendChild(span)
     }
+
+    window.onresize = () => this.UpdateCursorPosition()
   }
 
   Restart () {
