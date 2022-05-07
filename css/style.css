@@ -61,16 +61,16 @@ a:focus {
   text-decoration: none;
 }
 
-div.buttons {
+div.buttons, div.modes {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-div.modes {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+div.sidebar-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 a.mode {
@@ -93,6 +93,10 @@ a.contact {
   margin: 0 0.5em;
 }
 
+.side-link {
+  margin: 1em 0.5em;
+}
+
 .is-active {
   display: none;
 }
@@ -108,7 +112,7 @@ div.game-container {
   align-items: center;
 }
 
-div.settings-container {
+div.settings-container, div#loading-container {
   display: flex;
   height: 100%;
   flex-direction: column;
@@ -170,6 +174,10 @@ div.typing-container {
   flex-direction: column;
 }
 
+div.typing-container:focus {
+  outline: 0px;
+}
+
 p.timer {
   display: inline-block;
 }
@@ -186,13 +194,56 @@ p.typing-text {
   text-align: center;
 }
 
-span.typing-cursor {
+span#typing-cursor {
+  display: none;
+  position: absolute;
   animation: blink 0.7s alternate infinite;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+div#loading-container {
+  display: none;
+}
+
+i.loading {
+  animation: spin 1s linear infinite;
+}
+
+#sidebar {
+  height: 100%; 
+  width: 0; 
+  position: fixed; 
+  z-index: 1;
+  display: flex;
+  right: 0;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  padding-top: 10%;
+  transition: 0.3s;
+}
+
+#close-button {
+  position: absolute;
+  font-size: 2em;
+  top: 1%;
+  left: 3%;
+}
+
+#input {
+  position: absolute;
+  top: -200px;
 }
 
 @keyframes blink {
   0%{opacity: 0;}
   100%{opacity: 1;}
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .unselectable {
@@ -204,7 +255,7 @@ span.typing-cursor {
   user-select: none;
 }
 
-@media (max-aspect-ratio: 1/1) {
+@media (max-aspect-ratio: 13/10) {
     .nav {
         height: 100vh;
     }
@@ -226,7 +277,6 @@ span.typing-cursor {
     }
 
     div.typing-container {
-      display: flex;
       align-items: center;
       flex-direction: column;
     }
@@ -235,10 +285,14 @@ span.typing-cursor {
       font-size: x-large;
       text-align: center;
     }
+
+    span#typing-cursor {
+      font-size: x-large;
+    }
 }
 
-@media (min-aspect-ratio: 1/1) {
-    .nav-burger {
+@media (min-aspect-ratio: 13/10) {
+    #nav-burger {
         display: none;
     }
 
@@ -248,4 +302,8 @@ span.typing-cursor {
         display: flex;
         align-items: center;
     }
+
+    div.typing-container:not(:focus) {
+      filter: blur(3px);
+    }    
 }
