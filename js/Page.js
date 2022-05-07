@@ -1,45 +1,36 @@
-export class Page 
-{
-    constructor(container, name)
-    {
-        this._container = container;
-        this._name = name;
+export class Page {
+  constructor (container, name) {
+    this._container = container
+    this._name = name
+  }
+
+  async Load () {
+    const response = await fetch(`./pages/${this._name}.html`)
+    this._html = await response.text()
+  }
+
+  async Show (callback) {
+    if (this._html === undefined) {
+      await this.Load()
     }
 
-    async Load()
-    {
-        let response = await fetch(`./pages/${this._name}.html`);
-        this._html = await response.text();
-    }
+    this._container.innerHTML = this._html
+    this.AfterShowingHook()
 
-    async Show(callback)
-    {
-        if (this._html === undefined)
-        {
-            await this.Load();
-        }
+    callback()
+  }
 
-        this._container.innerHTML = this._html;
-        this.AfterShowingHook();
+  AfterShowingHook () { }
 
-        callback();
-    }
+  Hide () {
+    this._container.innerHTML = ''
+  }
 
-    AfterShowingHook()
-    { }
+  get Name () {
+    return this._name
+  }
 
-    Hide() 
-    {
-        this._container.innerHTML = "";
-    }
-
-    get Name()
-    {
-        return this._name;
-    }
-
-    get HTML()
-    {
-        return this._html;
-    }
+  get HTML () {
+    return this._html
+  }
 }

@@ -1,0 +1,39 @@
+name: Check And Deploy
+on: [push]
+jobs:
+  check:
+    name: Lint and Check JS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install dependencies(eslint)
+        run: npm ci
+
+      - name: Run Checks
+        run: npx eslint js/** --ext .js -c .eslintrc.json
+
+
+  deploy:
+    name: Deploy Website to Github Pages
+    needs: check
+    concurrency: ci-${{ github.ref }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          branch: gh-pages
+          folder: .
+          commit-message: Github-Pages Deploy

@@ -1,0 +1,26 @@
+{
+  "name": "itirod",
+  "description": "**Климович Артемий 953503**",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artegful/itirod.git"
+  },
+  "author": "artegful",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/artegful/itirod/issues"
+  },
+  "homepage": "https://github.com/artegful/itirod#readme",
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.0",
+    "eslint-plugin-promise": "^6.0.0"
+  }
+}
